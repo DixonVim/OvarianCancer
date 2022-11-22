@@ -26,7 +26,7 @@ The spectral slopes are stored as `SlopeDataset4_3_2.mat`. The **Fisher's Criter
   
   ii. **Direct Method:** using features selected by applying the Fisher's criteria on the protein mass spectra. 
   
-  iii. **Joint Classification:** integrating features from  both the proposed method and the direct method.
+  iii. **Joint Method:** integrating features from  both the proposed method and the direct method.
   
 **Note:** The same procedure is perfromed on the `Ovarian 8-7-02` dataset using the codes named with `8-7-02`. 
 
