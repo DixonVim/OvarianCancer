@@ -1,6 +1,6 @@
 # A Wavelet-based Method for Early Detection of Ovarian Cancer
 ## Overview
-This project proposes a new method for detecting ovarian cancer in its early stages. Based on the self-similarity of protein mass spectra, this novel method defines discriminatory descriptors that can be used to detect the presence of cancer. Wavelet spectra are used to assess the self-similarity of protein mass spectra in the wavelet domain. A distance variance-based method is proposed as a novel method for computing wavelet spectra because it is more robust to outliers and noise. The slope of the wavelet spectrum reflects the interplay between protein expression levels, which indicates the presence of cancer. 
+The aim of this project is to describe a new method for detecting ovarian cancer. Based on the self-similarity of protein mass spectra, the new method method defines discriminatory descriptors that can be used to detect the presence of cancer. Wavelet spectra of protein mass spectra are used to assess self-similarity in the wavelet domain. A distance variance-based method is proposed as a novel method for computing wavelet spectra because it is more robust to outliers and noise, which typically present in protein mass spectra. The slope of the wavelet spectrum reflects the interplay between protein expression levels, which indicates the presence of cancer. 
 
 ## Dataset
 The data used in the project available at the [American National Cancer Institute Internet Repository](https://home.ccr.cancer.gov/ncifdaproteomics/ppatterns.asp). 
@@ -18,10 +18,8 @@ Two datasets namely `Ovarian 4-3-02` (_100 cases and 100 controls_) and `Ovarian
      
      ii). **Distance Variance Based Wavelet Spectra:**  the standard variance wavelet spectra is sensitive to outliers and noise typically present in protein mass spectra. The distance variance-based method is proposed to assess self-similarity more precisely.
      
-
-3. **Rolling Window-based Approach:** each protein mass spectrum is devided into a set of data widnows of size 1024. Wavelet spectrum for each data window is computed to estimate the slope. As a result, a collection of slopes is generated, which serve as discriminatory descriptors. 
-
-5. Fisher's criterion is used to select the most significant discriminatory descriptors.  
+3. **Rolling Window-based Approach:** Every protein mass spectrum is divided into a set of data windows of size 1024, and the wavelet spectrum for each data window is calculated to determine the slope. As a result, a collection of slopes is generated, which are then used as discriminatory descriptors.
+4. Fisher's criterion is used to select the most significant discriminatory descriptors.  
 
 ### Direct (Existing) Method
 The Fisher's criteria is applied on the original protein mass spectra to select features with large differences in mean intensity values  between cases and controls at each mass-to-chage ratio values.
@@ -31,18 +29,18 @@ The following steps are explains procedure use to detect the presence of cancer 
 1. **Load Data:** `DataRead_4_3_02.m` reads data from the dataset `Ovarian 4-3-02`and then stores as `ovarian12.mat`. 
 
 2. **Classifying Features:** `ComputeSlop_4_3_02.m` computes wavelet spectra and estimates slopes under the 
-standard variance and distance variance methods. The spectral slopes are stored as `SlopeDataset4_3_2.mat`. 
+standard variance and distance variance methods. The slopes are stored as `SlopeDataset4_3_2.mat`. 
 
 3. **Classifiers:** Three different classifires, **Logistic Regression, Support Vector Machine**, and **K-Nearest Neighbor** are used in 
 `OvarianJointclassify.m` to perform classification. 
 
-4. **Detection Of Cancer:** `Demo_Dataset_4_3_03.m` performs the following classifications, and performance is evaluated by computing three performance measures, classfication accuracy, sensitivity, and specificity.
+4. **Detection Of Cancer:** `Demo_Dataset_4_3_03.m` performs the following three classifications:
 
-   i). **Proposed Modality:** using the descriptors computed from the standard variance and distance variance based methods.
+   i). **Self-Similarity based Method:** using the descriptors computed from the standard variance and distance variance based methods.
   
    ii). **Direct Method:** using features selected by applying the Fisher's criteria on the protein mass spectra. 
   
-   iii). **Joint Method:** integrating features from  both the proposed method and the direct method.
+   iii). **Joint Method:** integrating features from  both the self-similarity based method and the direct method.
   
 **Note:** The same procedure is perfromed on the `Ovarian 8-7-02` dataset using the codes named with `8-7-02`. 
 
