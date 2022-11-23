@@ -4,10 +4,18 @@ This project proposes a new method for detecting ovarian cancer in its early sta
 
 ## Dataset
 The data used in the project available at the [American National Cancer Institute Internet Repository](https://home.ccr.cancer.gov/ncifdaproteomics/ppatterns.asp). 
-Two datasets namely `Ovarian 4-3-02` (**100 cases and 100 controls**) and `Ovarian 8-7-02` (**162 cases and 91 controls**) were used to validate the proposed modality. 
+Two datasets namely `Ovarian 4-3-02` (**100 cases and 100 controls**) and `Ovarian 8-7-02` (**162 cases and 91 controls**) were used to validate the proposed modality. Each protein mass spectra consists of the intensities of 15,153 peptides defined by their mass-to-charge ratio (i.e. the ratio of molecular weight to electrical charge) (M/z).
 
-## Method
+
+## Methods
 ### Proposed Method
+ The proposed method assesses self-similarity of protein mass spectra in the wavelt-domain and define descriminatory descriptors to identify diagnostic features in protein mass spectra. The following concepts/methods are used in this method.
+ 
+1. **Wavelet Transform:** a standard signal processing tool decomposes protein mass spectra into a hierarchy of resolutions convenient for assessing self-similarity. 
+2. **Self-Similarity:** a phenomenon characterizes the stochastic similarity in protein mass spectra when viewed at different resolution scales.
+3. **Standard Wavelet Spectra:** consists of wavelet log-energies (logarithm of average of squared wavelet coefficients) as a function of resolution level. The regular decay (slope) in wavelet energies with a increase of resolution indicates self-similarity. 
+5. **Distance Variance:**  the standard wavelet spectra is sensitive to outliers and noise typically present in protein mass spectra. The distance variance-based method is proposed to assess self-similarity more precisely.
+
 By using a rolling window-based approach, we compute wavelet spectra of protein mass spectra and estimate their slopes. As a result, a collection of slopes is generated, which serve as discriminatory descriptors. Using the standard variance and distance variance of the detail wavelet coefficients, we can estimate the slope by computing the wavelet spectrum. Fisher's criterion is then applied to select the most significant spectral descriptors.  
 
 ### Direct Method
